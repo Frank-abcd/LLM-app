@@ -10,7 +10,7 @@ class LLM:
         self.top_p = top_p
         self.task = task
         self.messages = [{"role": "system", "content": task}]
-        self.api = 'api'# 替换为您的通义千问api
+        self.api = 'sk-c817ea30ea944b888b0f45e6409c34c2'
         self.base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
         self.tool_executor = ToolExecutor()
         self.available_tools = self._load_tools() if tools else None

@@ -255,7 +255,7 @@ class Interface:
                 self._show_error(f"图片识别失败: {e}")
 
     def doubao_image_to_text(self, image_path):
-        api_key = "api"# 替换为您的豆包api
+        api_key = "45b774cc-7c8b-4278-b0a3-337f12a8a356"
         with open(image_path, "rb") as f:
             img_base64 = base64.b64encode(f.read()).decode()
         url = "https://ark.cn-beijing.volces.com/api/v3/chat/completions"
