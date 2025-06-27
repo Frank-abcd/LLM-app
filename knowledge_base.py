@@ -12,7 +12,7 @@ class KnowledgeBase:
         os.environ['HF_HUB_OFFLINE'] = '1'
         
         # 2. 使用POSIX格式路径（关键修改）
-        model_dir = Path(r"C:\Users\文学明\Downloads\202506aicode\all-MiniLM-L6-v2").as_posix()  # 转换为正斜杠
+        model_dir = Path(r"D:\202506aicode\all-MiniLM-L6-v2").as_posix()  # 转换为正斜杠
         
         # 3. 双重验证
         if not os.path.exists(model_dir):

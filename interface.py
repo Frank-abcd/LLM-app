@@ -12,6 +12,7 @@ import base64
 import datetime
 import shutil
 import re
+import config
 
 class Interface:
     def __init__(self, root):
@@ -19,6 +20,9 @@ class Interface:
         self.root = root
         self.root.title("大语言模型应用")
         self.root.geometry("1200x800")
+
+        self._get_api_url_from_user()  # 获取API Key和Base URL
+
         self.root.lift()
         # 设置窗口短暂置顶
         self.root.attributes("-topmost", True)  # 立即置顶
@@ -130,7 +134,29 @@ class Interface:
         )
         self.new_conversation_btn.pack(side=tk.RIGHT, padx=5)
 
+    def _get_api_url_from_user(self):
+        if config.API_KEY is None:
+            api_key = tk.simpledialog.askstring(
+                "API Key",
+                "请输入您的LLM API Key:",
+                show = '*'
+            )
+            if api_key:
+                config.API_KEY = api_key.strip()
+            else:
+                tk.messagebox.showerror("错误","未输入API Key，程序将无法正常工作。")
+                self.root.destroy() 
 
+        if config.BASE_URL is None:
+            url = tk.simpledialog.askstring(
+                "Base URL",
+                "请输入您的LLM BASE URL:",
+            )
+            if url:
+                config.BASE_URL = url.strip()
+            else:
+                tk.messagebox.showerror("错误","未输入BASE URL，程序将无法正常工作。")
+                self.root.destroy()
         
     # 在此处添加实际功能实现
     def _on_canvas_configure(self, event):
